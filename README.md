@@ -1,27 +1,44 @@
-﻿# compilateur-
-FIRST and FOLLOW Set Calculator (C Program)
-This C program computes the FIRST and FOLLOW sets for a given context-free grammar (CFG). It is a useful tool for students and educators studying compiler design and formal language theory.
+# FIRST and FOLLOW Set Calculator in C
 
-📌 Features
-Accepts grammar rules as input in the format A->XYZ or with multiple alternatives like A->X|Y|Z.
+This project is a simple C program to calculate the **FIRST** and **FOLLOW** sets of a context-free grammar. It is designed for students learning compiler construction and syntax analysis.
 
-Handles epsilon (#) productions.
+## 🧩 Features
 
-Computes and displays the FIRST and FOLLOW sets for each non-terminal in the grammar.
+- Supports multiple grammar rules.
+- Handles epsilon (empty string) productions using `#`.
+- Accepts rules with multiple right-hand side options using `|`.
+- Automatically calculates:
+  - `FIRST(X)` for all non-terminals
+  - `FOLLOW(X)` for all non-terminals
 
-📚 Example
-Input:
-rust
-Copier
-Modifier
+## 🛠️ How to Compile and Run
+
+You can compile and run this program using any standard C compiler like `gcc`:
+
+```bash
+gcc -o first_follow first_follow.c
+./first_follow
+📥 Input Format
+The program will first ask for the number of rules.
+
+Then enter the rules in the format:
+
+
+A->BCD
+A->a|b|#
+Use # to represent epsilon (empty string).
+
+All non-terminals must be uppercase letters (A-Z), and terminals lowercase or symbols.
+📤 Sample Input
+
 Nombre de règles : 3
-Règle 1 (ex : E->TR) : E->TR
-Règle 2 (ex : E->TR) : R->+TR|#
-Règle 3 (ex : E->TR) : T->FT'
-Output:
-ruby
-Copier
-Modifier
+Règle 1 : E->TR
+Règle 2 : R->+TR|#
+Règle 3 : T->FT'
+📊 Sample Output
+
+
+
 --- PREMIER ---
 PREMIER(E) = { ( }
 PREMIER(R) = { +, # }
@@ -31,39 +48,3 @@ PREMIER(T) = { ( }
 SUIVANT(E) = { $, ) }
 SUIVANT(R) = { $, ) }
 SUIVANT(T) = { +, $, ) }
-🛠️ How It Works
-estNonTerminal: Checks whether a character is a non-terminal.
-
-ajouter: Adds a symbol to a set (avoids duplicates).
-
-calculerPremier: Recursively computes the FIRST set for a symbol.
-
-calculerSuivant: Recursively computes the FOLLOW set for a symbol.
-
-ajouterRegle: Parses and stores grammar rules, including alternatives (|).
-
-main: Takes user input, computes FIRST and FOLLOW sets, and prints them.
-
-✅ Compilation & Execution
-Use gcc or any C compiler:
-
-bash
-Copier
-Modifier
-gcc -o first_follow first_follow.c
-./first_follow
-🧠 Notes
-Epsilon is represented by #.
-
-The start symbol is assumed to be the left-hand side of the first rule.
-
-The program supports up to 50 grammar rules.
-
-📄 File Structure
-plaintext
-Copier
-Modifier
-first_follow.c   // Main program file
-🧑‍💻 Author
-Developed by a student learning compiler design concepts.
-
